@@ -1,0 +1,24 @@
+{
+  "name": "vaultdragon",
+  "version": "1.0.0",
+  "description": "demotest",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/priyankajalan/vaultdragon.git"
+  },
+  "author": "Priyanka Jalan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/priyankajalan/vaultdragon/issues"
+  },
+  "homepage": "https://github.com/priyankajalan/vaultdragon#readme",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "express": "^4.14.0"
+  }
+}
