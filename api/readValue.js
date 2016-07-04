@@ -6,6 +6,7 @@ module.exports = function(req, res) {
     var key = req.body.key;
     var timestamp = req.body.timestamp;
     pg.connect(connectionString, function(err, client, done){
+        //For Searching with only key
     	if(!timestamp){
     		 client.query("SELECT * FROM vaultapp WHERE key = $1",[key], function(err, result) {
                 var LatestValue = Math.max.apply(Math,result.rows.map(function(o){return o.timestamp;}));
@@ -21,6 +22,7 @@ module.exports = function(req, res) {
                 done(); 
          });
     	}
+        //For Searching with key and timestamp
     	if(timestamp){
     		client.query("SELECT * FROM vaultapp WHERE key = $1 AND timestamp = $2",[key,timestamp], function(err, result) {
     			var response = {

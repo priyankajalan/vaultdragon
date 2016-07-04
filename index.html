@@ -2,8 +2,6 @@
 <head>
 	<title>Vault Dragon</title>
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="node_modules/jquery-timepicker/jquery.timepicker.css">
-	<link rel="stylesheet" type="text/css" href="node_modules/jquery-datetimepicker/jquery.datetimepicker.css">
 </head>
 <body>
 <div ng-app="vaultDragonApp">
@@ -45,7 +43,6 @@
 				<input type='text' class='form-control' placeholder='Enter your Key' ng-model='searchPart.key'>
 				<br>
 				<input type='text' class='form-control' placeholder='Enter TimeStamp' ng-model='searchPart.timestamp'>
-				<!-- <input type="text" class="form-control" id="datetimepicker" placeholder='Select Date of Entry' ng-model='searchPart.timestamp'> -->
 				<br>
 				<button class='btn btn-primary' ng-click='searchValuePart(searchPart)'>Submit</button>
 				<br>
@@ -60,8 +57,5 @@
 <script type="text/javascript" src='node_modules/angular/angular.min.js'></script>
 <script type="text/javascript" src='client/app.js'></script>
 <script type="text/javascript" src='client/appController.js'></script>
-<script type="text/javascript" src='node_modules/jquery-timepicker/jquery.timepicker.js'></script>
-<script type="text/javascript" src='node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js'></script>
-
 </body>
 </html>

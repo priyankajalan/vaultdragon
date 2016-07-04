@@ -3,19 +3,6 @@ angular.module('vaultDragonApp')
 
 	$scope.res = null;
 
-	$('#timePicker').timepicker({
-		'minTime': '12:00am',
-    	'maxTime': '12:00pm',
-    	'scrollbar' : true
-	});
-
-	$( '#datetimepicker' ).datetimepicker({
-		changeMonth: true,
-                changeYear: true,
-                dateFormat: 'mm/dd/yy'
-	});
-
-
 	$scope.createKeyValue = function(data){
 		$scope.dataErr = false;
 		$scope.dataKeyErr = false;
@@ -33,12 +20,9 @@ angular.module('vaultDragonApp')
 			return;	
 		}
 		var d = new Date().getTime();
-		console.log(d);
 		data.timestamp = d;
-		// console.log(data)
 		$http.post('/updateKeyValue',data)
 		.then(function(res){
-			console.log(res);
 			$scope.res = res;
 		});
 	}
@@ -59,8 +43,7 @@ angular.module('vaultDragonApp')
 		if(!searchPart){
 			$scope.searchPartErr = true;
 			return;
-		}
-		console.log(searchPart);
+		}		
 		$http.post('/readValue',searchPart)
 		.then(function(res){
 			$scope.resPart = res;
