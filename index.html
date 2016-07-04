@@ -2,24 +2,66 @@
 <head>
 	<title>Vault Dragon</title>
 	<link rel="stylesheet" type="text/css" href="assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/jquery-timepicker/jquery.timepicker.css">
+	<link rel="stylesheet" type="text/css" href="node_modules/jquery-datetimepicker/jquery.datetimepicker.css">
 </head>
 <body>
-<div ng-app="">
-	<div class='text-center'>
-		<br><br>
-		<h3>Vault Dragon Coding Apptitude</h3>
-		<br><br>
-		<div style='width:30%;margin:auto;'>
-			
+<div ng-app="vaultDragonApp">
+	<div class='text-center' ng-controller='appController'>
+		<br>
+		<h2>Vault Dragon Coding Apptitude</h2>
+		<div class='col-md-6'>
+			<h3>Add key and value</h3>
+			<label class='text-danger' ng-cloak ng-if='res.data.statusCode == 1002'>Key and value added to the database</label>
+			<label class='text-danger' ng-cloak ng-if='res.data.statusCode == 1001'>Value updated to the database</label>
+			<label class='text-danger' ng-cloak ng-if='dataErr'>Enter key and value to add</label>
 			<br>
-			<input type='text' class='form-control' placeholder='Enter your Key'>
-			<br>
-			<input type='text' class='form-control' placeholder='Enter your value'>
-			<br>
-			<button class='btn btn-primary'>Submit</button>
+			<div style='width:80%;margin:auto;'>			
+				<br>
+				<input type='text' class='form-control' placeholder='Enter your Key' ng-model='data.key'>
+				<label class='text-danger' ng-cloak ng-if='dataKeyErr'>Enter any key</label>
+				<br>
+				<input type='text' class='form-control' placeholder='Enter your value' ng-model='data.value'>
+				<label class='text-danger' ng-cloak ng-if='dataValueErr'>Enter any value</label>
+				<br>
+				<button class='btn btn-primary' ng-click='createKeyValue(data)'>Submit</button>
+			</div>
+		<br>
 		</div>
+		<div class='col-md-6'>
+			<div style='width:80%;margin:auto;'>
+				<h3>Search value for key</h3>
+				<input type='text' class='form-control' placeholder='Enter your Key' ng-model='search.key'>
+				<br>
+				<label class='text-danger' ng-cloak ng-if='searchErr'>Enter a key to Search</label>
+				<br ng-cloak ng-if='searchErr'>
+				<button class='btn btn-primary' ng-click='searchValue(search)'>Submit</button>
+				<br>
+				<h4 class='text-compplete' ng-if='rows.value' ng-cloak>The latest value for the key {{rows.key}} is {{rows.value}}</h4>
+			</div>
+			<hr>
+			<div style='width:80%;margin:auto;'>
+				<h3>Search value for key at a particular time</h3>
+				<input type='text' class='form-control' placeholder='Enter your Key' ng-model='searchPart.key'>
+				<br>
+				<input type='text' class='form-control' placeholder='Enter TimeStamp' ng-model='searchPart.timestamp'>
+				<!-- <input type="text" class="form-control" id="datetimepicker" placeholder='Select Date of Entry' ng-model='searchPart.timestamp'> -->
+				<br>
+				<button class='btn btn-primary' ng-click='searchValuePart(searchPart)'>Submit</button>
+				<br>
+				<h4 class='text-compplete' ng-if='rowsPart.value' ng-cloak>The latest value for the key {{rowsPart.key}} is {{rowsPart.value}}</h4>
+			</div>
+		</div>
+		
+		
 	</div> 	
 </div>
+<script type="text/javascript" src='node_modules/jquery/dist/jquery.min.js'></script>
 <script type="text/javascript" src='node_modules/angular/angular.min.js'></script>
+<script type="text/javascript" src='client/app.js'></script>
+<script type="text/javascript" src='client/appController.js'></script>
+<script type="text/javascript" src='node_modules/jquery-timepicker/jquery.timepicker.js'></script>
+<script type="text/javascript" src='node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.min.js'></script>
+
 </body>
 </html>
